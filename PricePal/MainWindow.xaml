@@ -5,8 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PricePal"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
         
+        Title="PricePal" Height="450" Width="800"
+        MinHeight="450" MinWidth="800"
+        Background="#3c3d42">
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="colorPricePal_DarkGrey" Color="#3c3d42"/>
+        <SolidColorBrush x:Key="colorPricePal_LightGrey" Color="#82848f"/>
+    </Window.Resources>
+
+    <Grid Margin="15">
+        <TabControl Margin="10,-10,10,10"
+                    Background="{StaticResource colorPricePal_DarkGrey}"
+                    BorderThickness="3"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch">
+
+            <TabItem Header="Scraper">
+                <Grid Background="{StaticResource colorPricePal_DarkGrey}"/>
+            </TabItem>
+            <TabItem Header="Tracker">
+                <Grid Background="{StaticResource colorPricePal_DarkGrey}"/>
+            </TabItem>
+            <TabItem Header="Settings">
+                <Grid Background="{StaticResource colorPricePal_DarkGrey}"/>
+            </TabItem>
+        </TabControl>
+
     </Grid>
+
 </Window>
