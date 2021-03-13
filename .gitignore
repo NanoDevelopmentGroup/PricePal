@@ -109,3 +109,6 @@ venv.bak/
 # application log files
 data/logs/*
 !data/logs/.gitkeep
+
+# local email configuration files
+pricepal/notification/*.json
