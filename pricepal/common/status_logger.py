@@ -2,6 +2,7 @@
 
 # Standard Libraries
 import logging
+from logging.handlers import RotatingFileHandler
 
 # Third-party Libraries
 from PyQt5 import QtCore, QtWidgets
@@ -50,8 +51,8 @@ class QTextEditLogger(logging.Handler, QtCore.QObject):
         self.appendPlainText.connect(self.widget.appendPlainText)
 
         # Add the widget as the first in the statusbar, set static formatting
-        status_bar.addPermanentWidget(self.widget,1)
-        status_bar.setContentsMargins(8,2,0,4)
+        status_bar.addPermanentWidget(self.widget, 1)
+        status_bar.setContentsMargins(8, 2, 0, 4)
         self.widget.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.widget.setFrameShadow(QtWidgets.QFrame.Plain)
         self.widget.setMaximumHeight(18)
@@ -67,3 +68,25 @@ class QTextEditLogger(logging.Handler, QtCore.QObject):
         self.appendPlainText.emit(msg)
         self.setScrollValue.emit(self.widget.verticalScrollBar().maximum() - 1)
 
+def init_test_logging():
+    logging.getLogger().setLevel(logging.DEBUG)
+
+    log_console = logging.StreamHandler()
+    log_console.setFormatter(
+        logging.Formatter(
+            '%(asctime)s | %(levelname)s | Module: %(module)s | Function: %(funcName)s | %(message)s'
+        )
+    )
+
+    logging.getLogger().addHandler(log_console)
+
+    rotating_log_file = RotatingFileHandler('data/logs/pricepal-test-log.log', maxBytes=100000, backupCount=9)
+    rotating_log_file.setFormatter(
+        logging.Formatter(
+            '%(asctime)s | %(levelname)s | Module: %(module)s | Function: %(funcName)s | %(message)s'
+        )
+    )
+
+    logging.getLogger().addHandler(rotating_log_file)
+
+    logging.debug("Initialized logger for test functionality.")
