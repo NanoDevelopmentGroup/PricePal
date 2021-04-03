@@ -1,14 +1,19 @@
-# Definition ==========================================================
-#
-# Contains helper functions to perform actions of the UI widgets.
-# This file's functions should also standalone if necessary, the UI
-# only provides a means to call this set of functions.
-#
+"""
+Summary:
+
+This module contains helper functions to perform actions of the UI widgets.
+The functions within are intended to standalone if necessary; the UI
+only provides a means to call this set of functions via widgets.
+
+Functions:
+    test_logging()
+
+"""
+
 # Imports =============================================================
 
 # Standard Libraries
 import logging
-import time
 
 # =====================================================================
 
