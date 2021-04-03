@@ -112,3 +112,4 @@ data/logs/*
 
 # local email configuration files
 pricepal/notification/*.json
+tests/receiver_email.json
