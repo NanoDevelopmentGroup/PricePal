@@ -1,6 +1,7 @@
 # Imports =============================================================
 
 # Standard Libraries
+import os
 import sys
 import logging
 from logging.handlers import RotatingFileHandler
@@ -12,8 +13,7 @@ from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
 
 # Local Application Libraries
-from gui.ui_utils import find_form
-from common import actions
+import pricepal_utils as utils
 from common.status_logger import QTextEditLogger
 
 # =====================================================================
@@ -23,7 +23,7 @@ class PricePalMainWindow(QtWidgets.QMainWindow):
         super(PricePalMainWindow, self).__init__()
 
         # Load the main window GUI file
-        uic.loadUi(find_form('pricepal_mainform.ui'), self)
+        uic.loadUi(os.path.join(utils.GUI_DIR, 'pricepal_mainform.ui'), self)
 
         # Add the custom matplotlib widget to the defined groupbox
         self.plotwindow = MplWidget(self.groupBox_Graph)
