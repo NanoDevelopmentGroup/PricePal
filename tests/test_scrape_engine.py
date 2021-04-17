@@ -14,9 +14,14 @@ import json
 # Local Application Libraries
 import pricepal.common.scrape_engine as scraper
 from pricepal.common.status_logger import init_test_logging
-from pricepal.gui.ui_utils import find_form
+from pricepal.pricepal_utils import root_relative_path
 
 # Constants ===========================================================
+
+SCRAPE_TEST_CASES = "test_scrape_engine_cases.json"
+# This file is a json, including key:value pairs of:
+# test_case_N : <str> -- the website url to request during test
+# response_case_N : <str, html> -- optional html payload to compare test response against
 
 # =====================================================================
 
@@ -24,13 +29,8 @@ from pricepal.gui.ui_utils import find_form
 init_test_logging()
 
 # Load address used to receive test emails from a local file
-file_location = find_form("test_scrape_engine_cases.json")
+file_location = root_relative_path(SCRAPE_TEST_CASES)
 
-# This file will be a barebones json, including key:value pairs of:
-# test_case_N:<website url>
-# and optional key:value pairs of:
-# response_case_N:<expected response for comparison>
-# to confirm the response from the url
 with open(file_location) as scrape_test_cases_file:
     scrape_test_cases = json.load(scrape_test_cases_file)
 
