@@ -110,6 +110,6 @@ venv.bak/
 data/logs/*
 !data/logs/.gitkeep
 
-# local email configuration files
+# local email and url configuration files
 pricepal/notification/*.json
-tests/receiver_email.json
+tests/*.json
