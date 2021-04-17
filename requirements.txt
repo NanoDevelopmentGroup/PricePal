@@ -23,6 +23,6 @@ six==1.15.0
 tabulate==0.8.9
 toml==0.10.1
 typed-ast==1.4.1
-urllib3==1.26.3
+urllib3==1.26.4
 wheel==0.34.2
 wrapt==1.12.1
